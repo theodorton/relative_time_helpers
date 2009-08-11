@@ -15,7 +15,8 @@ module ActiveReload
       :year_format      => ', %Y'
     }
 
-    def relative_date(time, in_past = false)
+    def relative_date(time, options={})
+      in_past = options[:in_past] || false
       date  = time.to_date
       today = time_class.now.to_date
       if date == today
@@ -35,7 +36,7 @@ module ActiveReload
     end
     
     def relative_date_in_past(time)
-      relative_date(time,true)
+      relative_date(time, :in_past => true)
     end
     
     def relative_date_span(times)
