@@ -17,10 +17,15 @@ module ActiveReload
 
     def relative_date(time, options={})
       in_past = options[:in_past] || false
+      today_as_time = options.key?(:today_as_time) ? options[:today_as_time] : true
       date  = time.to_date
       today = time_class.now.to_date
       if date == today
-        time.respond_to?(:min) ? time.strftime(time_output[:time_format]) : time_output[:today]
+        if today_as_time
+          time.respond_to?(:min) ? time.strftime(time_output[:time_format]) : time_output[:today]
+        else
+          time_output[:today]
+        end
       elsif date == (today - 1)
         time_output[:yesterday]
       elsif date == (today + 1)

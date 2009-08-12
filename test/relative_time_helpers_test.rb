@@ -25,9 +25,13 @@ class RelativeTimeHelpersTest < Test::Unit::TestCase
   def test_should_show_today
     assert_equal 'today', relative_date(Date.now)
   end
-  
+
   def test_should_show_time_today
     assert_equal '11:00 AM', relative_date(Time.now.utc)
+  end
+
+  def test_should_not_show_time_today
+    assert_equal 'today', relative_date(Time.now.utc, :today_as_time => false)
   end
 
   def test_should_show_yesterday
