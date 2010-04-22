@@ -43,6 +43,10 @@ class Time
     end
   end
 
+#   def to_date
+#     ::Date.new(year, month, day)
+#   end
+
   def to_delta(delta_type = :day)
     case delta_type
       when :year then self.class.delta(year)
@@ -50,6 +54,7 @@ class Time
       else self.class.delta(year, month, day)
     end
   end
+  
 end
 
-ActionView::Base.send :include, ActiveReload::RelativeTimeHelpers
+ActionView::Base.send :include, RelativeTimeHelpers
