@@ -1,5 +1,3 @@
-require 'rake'
-
 Gem::Specification.new do |s| 
   s.name = "relative_time_helpers"
   s.version = "0.0.1"
